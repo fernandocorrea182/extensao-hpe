@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Consultar Disponibilidade em Lote",
 	"description": "Acrescenta a opção de pesquisa em lote",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"icons": {
 		"128": "imagens/icon-128.png"   
 	},
@@ -19,5 +19,6 @@
 			"matches": ["http://svuxdsoa53/CDNQA/*"],
 			"js": ["jquery.js","script.js"]
 		}
-	]
+	],
+	"homepage_url": "https://github.com/fernandocorrea182/extensao-hpe"
 }
