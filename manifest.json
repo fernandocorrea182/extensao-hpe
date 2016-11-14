@@ -1,0 +1,23 @@
+{
+	"manifest_version": 2,
+	"name": "Consultar Disponibilidade em Lote",
+	"description": "Acrescenta a opção de pesquisa em lote",
+	"version": "0.0.5",
+	"icons": {
+		"128": "imagens/icon-128.png"   
+	},
+	"browser_action": {	
+		"default_icon": {           
+			"128": "imagens/icon-128.png"            
+		}   
+	},
+	"permissions": [
+		"notifications"
+	],
+	"content_scripts": [
+		{
+			"matches": ["http://svuxdsoa53/CDNQA/*"],
+			"js": ["jquery.js","script.js"]
+		}
+	]
+}
