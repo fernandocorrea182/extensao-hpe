@@ -1,7 +1,4 @@
-﻿function isNumber(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
+﻿
 var adicionarDivs = function(){
 	$('body').append('<div id="teste"></div>');
 	$('#teste').html('');
@@ -15,6 +12,10 @@ var adicionarInputs = function(){
 	$('#teste-input').append('<div style="margin-top: 5px;"><button id="btn-procurar-instancia">Procurar Instância</button></div>');
 }
 
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 var verificarCamposObrigatoriosPreenchidos = function(){
 	if(!$('input[name=ambiente_qa]:checked').size()){
 		return false;
@@ -25,7 +26,7 @@ var verificarCamposObrigatoriosPreenchidos = function(){
 	return true;
 }
 
-var testeValidar = function(ambiente_qa,cidades,telefones){
+var validarInstancia = function(ambiente_qa,cidades,telefones){
 	$.ajax({			
 		type: 'POST',
 		data: { 
@@ -43,7 +44,8 @@ var testeValidar = function(ambiente_qa,cidades,telefones){
 			}
 			else{
 				telefones.splice(0,1);
-				if(telefones.length>0&&telefones[0])testeValidar(ambiente_qa,cidades,telefones);
+				if(telefones.length>0&&telefones[0])
+					validarInstancia(ambiente_qa,cidades,telefones);
 				else{
 					$('#teste-resultado').html('');
 					alert('Não foi encontrado nenhum telefone');
@@ -58,7 +60,7 @@ var testeValidar = function(ambiente_qa,cidades,telefones){
 }
 
 var verificarLinhaDisponivel = function(html){
-	if(html.search("Linha Ocupada")==-1&&html.search("Linha ativa no Siebel 5")==-1){
+	if(html.search("Linha Ocupada")==-1){
 		return true;
 	}
 	return false;
@@ -126,7 +128,7 @@ $('body').on('click','#btn-procurar-instancia',function(){
 			$('#teste-resultado').html('Pesquisando... Aguarde!');
 			var ambiente_qa = $('input[name=ambiente_qa]:checked').val();
 			var cidade = $('select').val();
-			testeValidar(ambiente_qa,cidade,telefones);
+			validarInstancia(ambiente_qa,cidade,telefones);
 		}
 		else alert('Não foi encontrado nenhum telefone');		
 	}
