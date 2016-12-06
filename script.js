@@ -1,5 +1,4 @@
-﻿
-var adicionarDivs = function(){
+﻿var adicionarDivs = function(){
 	$('body').append('<div id="teste"></div>');
 	$('#teste').html('');
 	$('#teste').append('<div id="teste-input" style="text-align:center;"></div>');
@@ -39,13 +38,14 @@ var validarInstancia = function(ambiente_qa,cidades,telefones){
 		dataType: "html",
 		success: function(retorno){
 			if(verificarLinhaDisponivel(retorno)){
-				$('#teste-resultado').html('<div><h3>Instância Disponível: '+telefones[0]+'</h3></div><div>'+retorno+'</div>');
+				$('#teste-resultado').html('<div><h3>Instância Disponível: '+telefones[0]+'</h3></div><div><h5>('+telefones[0].substring(0,2)+')'+telefones[0].substring(2,6)+'-'+telefones[0].substring(6,10)+'</h5></div><div>'+retorno+'</div>');
 				removerHtml();
 			}
 			else{
 				telefones.splice(0,1);
-				if(telefones.length>0&&telefones[0])
-					validarInstancia(ambiente_qa,cidades,telefones);
+				if(telefones.length>0&&telefones[0]){
+					validarInstancia(ambiente_qa,cidades,telefones);					
+				}
 				else{
 					$('#teste-resultado').html('');
 					alert('Não foi encontrado nenhum telefone');
@@ -130,7 +130,8 @@ $('body').on('click','#btn-procurar-instancia',function(){
 			var cidade = $('select').val();
 			validarInstancia(ambiente_qa,cidade,telefones);
 		}
-		else alert('Não foi encontrado nenhum telefone');		
+		else 
+			alert('Não foi encontrado nenhum telefone');		
 	}
 	else{
 		alert('Selecione o Ambiente');
