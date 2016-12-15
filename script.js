@@ -53,6 +53,7 @@ var validarInstancia = function(ambiente_qa,cidades,telefones){
 			}			
 		},
 		beforeSend: function(){
+			$('#teste-resultado').html('Pesquisando... Aguarde: '+telefones[0]);
 		},
 		complete: function(){
 		}
